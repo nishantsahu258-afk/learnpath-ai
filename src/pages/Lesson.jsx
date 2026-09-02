@@ -1,4 +1,4 @@
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate, Link, useLocation } from 'react-router-dom';
 import { useLearning } from '../context/LearningContext';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
@@ -8,7 +8,13 @@ import { useEffect } from 'react';
 export function Lesson() {
   const { moduleId, lessonId } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const { learningPath, learningProgress, markLessonComplete, setCurrentLesson } = useLearning();
+
+  const fromPath = location.state?.from || '/modules';
+  let backLabel = '← Back to Modules';
+  if (fromPath === '/learning-path') backLabel = '← Back to My Learning';
+  if (fromPath === '/dashboard') backLabel = '← Back to Dashboard';
 
   useEffect(() => {
     if (lessonId && learningPath) {
@@ -46,7 +52,7 @@ export function Lesson() {
       markLessonComplete(lessonId);
     }
     if (nextLesson) {
-      navigate(`/lesson/${moduleId}/${nextLesson.id}`);
+      navigate(`/lesson/${moduleId}/${nextLesson.id}`, { state: { from: fromPath } });
     } else {
       navigate('/dashboard');
     }
@@ -60,10 +66,10 @@ export function Lesson() {
         <div className="mb-6">
           <Button 
             variant="ghost" 
-            onClick={() => navigate('/modules')} 
+            onClick={() => navigate(fromPath)} 
             className="mb-4 pl-0 text-fuchsia-400 hover:text-fuchsia-300 hover:bg-transparent"
           >
-            ← Back to Modules
+            {backLabel}
           </Button>
           <div className="text-sm font-semibold text-slate-400 tracking-wider uppercase mb-2">
             Module {moduleIndex + 1}: {currentModule.title}
@@ -92,7 +98,7 @@ export function Lesson() {
             {prevLesson && (
               <Button 
                 variant="ghost" 
-                onClick={() => navigate(`/lesson/${moduleId}/${prevLesson.id}`)}
+                onClick={() => navigate(`/lesson/${moduleId}/${prevLesson.id}`, { state: { from: fromPath } })}
                 className="w-full sm:w-auto"
               >
                 <ChevronLeft size={20} /> Previous Lesson
@@ -114,7 +120,7 @@ export function Lesson() {
             {nextLesson && isCompleted && (
               <Button 
                 variant="primary" 
-                onClick={() => navigate(`/lesson/${moduleId}/${nextLesson.id}`)}
+                onClick={() => navigate(`/lesson/${moduleId}/${nextLesson.id}`, { state: { from: fromPath } })}
                 className="w-full sm:w-auto hidden sm:flex"
               >
                 Next Lesson <ChevronRight size={20} />
@@ -136,6 +142,7 @@ export function Lesson() {
               <Link 
                 key={lesson.id} 
                 to={`/lesson/${moduleId}/${lesson.id}`}
+                state={{ from: fromPath }}
                 className={`flex items-start gap-3 p-3 rounded-lg transition-colors ${
                   isCurrent ? 'bg-slate-800/80 text-white' : 'hover:bg-slate-900 text-slate-400'
                 }`}

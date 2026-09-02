@@ -137,7 +137,7 @@ export function Dashboard() {
                   {currentLessonInfo.lesson.objective}
                 </p>
               </div>
-              <Link to={`/lesson/${currentLessonInfo.module.id}/${currentLessonInfo.lesson.id}`}>
+              <Link to={`/lesson/${currentLessonInfo.module.id}/${currentLessonInfo.lesson.id}`} state={{ from: '/dashboard' }}>
                 <Button variant="gradient" className="w-full">
                   <Play size={18} /> Continue Learning
                 </Button>

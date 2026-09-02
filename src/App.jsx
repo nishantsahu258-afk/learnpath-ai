@@ -6,6 +6,7 @@ import { AIGenerating } from './pages/AIGenerating';
 import { AIAssistant } from './pages/AIAssistant';
 import { Settings } from './pages/Settings';
 import { Dashboard } from './pages/Dashboard';
+import { LearningPath } from './pages/LearningPath';
 import { Modules } from './pages/Modules';
 import { Lesson } from './pages/Lesson';
 import { Progress } from './pages/Progress';
@@ -18,7 +19,7 @@ function App() {
         <Route path="/setup" element={<LearnerProfile />} />
         <Route path="/generating" element={<AIGenerating />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/learning-path" element={<Modules />} />
+        <Route path="/learning-path" element={<LearningPath />} />
         <Route path="/modules" element={<Modules />} />
         <Route path="/lesson/:moduleId/:lessonId" element={<Lesson />} />
         <Route path="/progress" element={<Progress />} />

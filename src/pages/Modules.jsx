@@ -43,7 +43,7 @@ export function Modules() {
 
           return (
             <Card key={module.id} className="p-0 hover:border-slate-700 transition-colors group">
-              <Link to={`/lesson/${module.id}/${module.lessons[0]?.id}`} className="block p-6">
+              <Link to={`/lesson/${module.id}/${module.lessons[0]?.id}`} state={{ from: '/modules' }} className="block p-6">
                 <div className="flex items-center gap-6">
                   <div className={`w-14 h-14 shrink-0 rounded-xl flex items-center justify-center text-2xl font-bold ${
                     isComplete 
