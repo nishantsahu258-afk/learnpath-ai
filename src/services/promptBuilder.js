@@ -14,6 +14,9 @@ Reason: ${profile.reason}
 Level: ${profile.level}
 Daily study time: ${profile.dailyTime}
 Duration: ${profile.duration}
+Preferred learning style: ${profile.learningStyle || 'A mix of theory, practical projects, and exercises'}
+
+- Calibrate lesson structure and examples to match the preferred learning style (${profile.learningStyle || 'Practical & Project-based'}).
 
 Return the response strictly as a JSON object matching this schema:
 {
@@ -27,7 +30,7 @@ Return the response strictly as a JSON object matching this schema:
       "description": "Module description",
       "lessons": [
         {
-          "id": "lesson-1",
+          "id": "m1-lesson-1 (MUST be unique across all modules, e.g. m1-lesson-1, m1-lesson-2, m2-lesson-1)",
           "title": "Lesson title",
           "objective": "What the learner will achieve",
           "estimatedMinutes": 30,
@@ -38,6 +41,6 @@ Return the response strictly as a JSON object matching this schema:
   ]
 }
 
-Ensure the output is valid JSON without any markdown formatting wrappers around it.
+Ensure every lesson ID is strictly unique across all modules. Ensure the output is valid JSON without any markdown formatting wrappers around it.
   `.trim();
 }

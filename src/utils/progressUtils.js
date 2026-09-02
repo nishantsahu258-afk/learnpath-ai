@@ -26,7 +26,7 @@ export function calculateStats(learningPath, learningProgress) {
   });
 
   const completedLessonsCount = learningProgress.completedLessonIds.length;
-  const overallProgress = totalLessons === 0 ? 0 : (completedLessonsCount / totalLessons) * 100;
+  const overallProgress = totalLessons === 0 ? 0 : Math.round((completedLessonsCount / totalLessons) * 100);
 
   return {
     totalModules,

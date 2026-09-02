@@ -1,5 +1,6 @@
-import { createContext, useContext, useCallback, useMemo } from 'react';
+import { createContext, useContext, useCallback, useMemo, useEffect } from 'react';
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import { normalizePathAndProgress } from '../utils/pathNormalizer';
 
 const LearningContext = createContext(null);
 
@@ -11,16 +12,41 @@ export function LearningProvider({ children }) {
     currentLessonId: null,
   });
 
+  // Migrate any existing paths where lesson IDs were duplicated across modules
+  useEffect(() => {
+    if (!learningPath || !learningPath.modules) return;
+
+    const seen = new Set();
+    let hasDuplicateLessonIds = false;
+    for (const mod of learningPath.modules) {
+      for (const lesson of mod.lessons || []) {
+        if (seen.has(lesson.id)) {
+          hasDuplicateLessonIds = true;
+          break;
+        }
+        seen.add(lesson.id);
+      }
+      if (hasDuplicateLessonIds) break;
+    }
+
+    if (hasDuplicateLessonIds) {
+      const { normalizedPath, normalizedProgress } = normalizePathAndProgress(learningPath, learningProgress);
+      setLearningPath(normalizedPath);
+      setLearningProgress(normalizedProgress);
+    }
+  }, [learningPath, learningProgress, setLearningPath, setLearningProgress]);
+
   const saveProfile = useCallback((profile) => {
     setLearnerProfile(profile);
   }, [setLearnerProfile]);
 
   const savePath = useCallback((path) => {
-    setLearningPath(path);
+    const { normalizedPath } = normalizePathAndProgress(path, null);
+    setLearningPath(normalizedPath);
     // When a new path is generated, reset progress
     setLearningProgress({
       completedLessonIds: [],
-      currentLessonId: path?.modules?.[0]?.lessons?.[0]?.id || null,
+      currentLessonId: normalizedPath?.modules?.[0]?.lessons?.[0]?.id || null,
     });
   }, [setLearningPath, setLearningProgress]);
 

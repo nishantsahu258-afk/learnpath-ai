@@ -11,8 +11,11 @@ export function validateLearningPath(data) {
     throw new Error('Invalid response: Modules must be a non-empty array');
   }
 
+  const seenLessonIds = new Set();
+
   data.modules.forEach((mod, mIndex) => {
-    if (!mod.id || !mod.title) {
+    if (!mod.id) mod.id = `module-${mIndex + 1}`;
+    if (!mod.title) {
       throw new Error(`Invalid module at index ${mIndex}: Missing id or title`);
     }
     
@@ -21,9 +24,15 @@ export function validateLearningPath(data) {
     }
 
     mod.lessons.forEach((lesson, lIndex) => {
-      if (!lesson.id || !lesson.title || !lesson.content) {
-        throw new Error(`Invalid lesson at index ${lIndex} in module '${mod.title}': Missing id, title, or content`);
+      if (!lesson.title || !lesson.content) {
+        throw new Error(`Invalid lesson at index ${lIndex} in module '${mod.title}': Missing title or content`);
       }
+      
+      // Enforce unique lesson IDs across all modules
+      if (!lesson.id || seenLessonIds.has(lesson.id)) {
+        lesson.id = `${mod.id}_${lesson.id || `lesson-${lIndex + 1}`}`;
+      }
+      seenLessonIds.add(lesson.id);
     });
   });
 

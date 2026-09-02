@@ -2,7 +2,7 @@ import { useParams, useNavigate, Link, useLocation } from 'react-router-dom';
 import { useLearning } from '../context/LearningContext';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
-import { ArrowLeft, CheckCircle2, Circle, Clock, ChevronRight, ChevronLeft, ExternalLink } from 'lucide-react';
+import { CheckCircle, Circle, Clock, CaretRight, CaretLeft, ArrowSquareOut } from '@phosphor-icons/react';
 import { useEffect } from 'react';
 
 export function Lesson() {
@@ -78,7 +78,7 @@ export function Lesson() {
             {currentLesson.title}
           </h1>
           <div className="flex items-center gap-2 text-slate-400 text-sm">
-            <Clock size={16} /> {currentLesson.estimatedMinutes} min
+            <Clock size={16} weight="duotone" /> {currentLesson.estimatedMinutes} min
           </div>
         </div>
 
@@ -101,7 +101,7 @@ export function Lesson() {
                 onClick={() => navigate(`/lesson/${moduleId}/${prevLesson.id}`, { state: { from: fromPath } })}
                 className="w-full sm:w-auto"
               >
-                <ChevronLeft size={20} /> Previous Lesson
+                <CaretLeft size={20} weight="bold" /> Previous Lesson
               </Button>
             )}
           </div>
@@ -112,9 +112,9 @@ export function Lesson() {
               className="w-full sm:w-auto"
             >
               {isCompleted ? (
-                <><CheckCircle2 size={20} className="text-cyan-400" /> Completed</>
+                <><CheckCircle size={20} weight="duotone" className="text-cyan-400" /> Completed</>
               ) : (
-                <>Mark as Complete <CheckCircle2 size={20} /></>
+                <>Mark as Complete <CheckCircle size={20} weight="duotone" /></>
               )}
             </Button>
             {nextLesson && isCompleted && (
@@ -123,7 +123,7 @@ export function Lesson() {
                 onClick={() => navigate(`/lesson/${moduleId}/${nextLesson.id}`, { state: { from: fromPath } })}
                 className="w-full sm:w-auto hidden sm:flex"
               >
-                Next Lesson <ChevronRight size={20} />
+                Next Lesson <CaretRight size={20} weight="bold" />
               </Button>
             )}
           </div>
@@ -149,9 +149,9 @@ export function Lesson() {
               >
                 <div className="mt-0.5 shrink-0">
                   {isLessonCompleted ? (
-                    <CheckCircle2 size={18} className="text-cyan-400" />
+                    <CheckCircle size={18} weight="duotone" className="text-cyan-400" />
                   ) : (
-                    <Circle size={18} className={isCurrent ? 'text-fuchsia-400' : 'text-slate-600'} />
+                    <Circle size={18} weight={isCurrent ? "duotone" : "regular"} className={isCurrent ? 'text-fuchsia-400' : 'text-slate-600'} />
                   )}
                 </div>
                 <div>
@@ -167,7 +167,7 @@ export function Lesson() {
         <div className="mt-12">
           <Card className="p-5 bg-cyan-900/10 border-cyan-500/20">
             <h4 className="flex items-center gap-2 font-semibold text-cyan-400 mb-2">
-              <ExternalLink size={16} /> Resources
+              <ArrowSquareOut size={16} weight="duotone" /> Resources
             </h4>
             <p className="text-sm text-slate-400 mb-4">
               Explore these external links to deepen your understanding.

@@ -1,4 +1,4 @@
-import { Sparkles } from 'lucide-react';
+import { Sparkle } from '@phosphor-icons/react';
 
 export function Button({ 
   children, 
@@ -19,7 +19,7 @@ export function Button({
 
   return (
     <button className={`${baseStyle} ${variants[variant]} ${className}`} disabled={isLoading} {...props}>
-      {isLoading ? <Sparkles className="animate-spin" size={18} /> : icon}
+      {isLoading ? <Sparkle className="animate-spin" size={18} weight="duotone" /> : icon}
       {children}
     </button>
   );

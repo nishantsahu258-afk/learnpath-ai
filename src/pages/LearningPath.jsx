@@ -4,7 +4,7 @@ import { Button } from '../components/ui/Button';
 import { ProgressBar } from '../components/ui/Progress';
 import { useLearning } from '../context/LearningContext';
 import { calculateStats } from '../utils/progressUtils';
-import { Target, Clock, CheckCircle2, Play, BookOpen, CircleDashed, ChevronRight } from 'lucide-react';
+import { Target, Clock, CheckCircle, Play, BookOpen, CircleNotch, CaretRight } from '@phosphor-icons/react';
 
 export function LearningPath() {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ export function LearningPath() {
       {/* Header & Profile Summary */}
       <div>
         <h1 className="text-3xl font-bold mb-2 flex items-center gap-3">
-          My Learning Journey <BookOpen className="text-fuchsia-400" size={32} />
+          My Learning Journey <BookOpen className="text-fuchsia-400" size={32} weight="duotone" />
         </h1>
         <p className="text-slate-400 mb-6">Your personalized roadmap to mastering your goal.</p>
         
@@ -35,8 +35,8 @@ export function LearningPath() {
             <div className="text-sm font-semibold text-fuchsia-400 uppercase tracking-wider mb-1">Goal</div>
             <div className="text-xl font-bold text-white mb-2">{learningPath.goal}</div>
             <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400">
-              <span className="flex items-center gap-1"><Target size={16} /> {learnerProfile?.level || 'Beginner'}</span>
-              <span className="flex items-center gap-1"><Clock size={16} /> {learningPath.duration}</span>
+              <span className="flex items-center gap-1"><Target size={16} weight="duotone" /> {learnerProfile?.level || 'Beginner'}</span>
+              <span className="flex items-center gap-1"><Clock size={16} weight="duotone" /> {learningPath.duration}</span>
             </div>
           </div>
           <div className="w-full md:w-64 shrink-0">
@@ -63,7 +63,6 @@ export function LearningPath() {
             const totalLessonsInModule = module.lessons.length;
             const progressPercentage = totalLessonsInModule === 0 ? 0 : (completedLessonsInModule / totalLessonsInModule) * 100;
             const isComplete = progressPercentage === 100;
-            const isInProgress = progressPercentage > 0 && progressPercentage < 100;
             
             // Determine if this is the "Current" module (first one not 100% complete)
             const isCurrentModule = !isComplete && (
@@ -77,10 +76,10 @@ export function LearningPath() {
             let borderClass = 'border-slate-800 hover:border-slate-700';
 
             if (isComplete) {
-              statusIcon = <CheckCircle2 size={24} className="text-cyan-400" />;
+              statusIcon = <CheckCircle size={24} weight="duotone" className="text-cyan-400" />;
               statusBadge = <span className="text-xs font-bold text-cyan-400 bg-cyan-400/10 px-2 py-1 rounded-md uppercase tracking-wide">Completed</span>;
             } else if (isCurrentModule) {
-              statusIcon = <CircleDashed size={24} className="text-fuchsia-400 animate-[spin_4s_linear_infinite]" />;
+              statusIcon = <CircleNotch size={24} weight="bold" className="text-fuchsia-400 animate-spin" />;
               statusBadge = <span className="text-xs font-bold text-fuchsia-400 bg-fuchsia-400/10 px-2 py-1 rounded-md uppercase tracking-wide">In Progress</span>;
               borderClass = 'border-fuchsia-500/30 ring-1 ring-fuchsia-500/10 shadow-[0_0_15px_rgba(217,70,239,0.05)]';
             } else {
@@ -128,7 +127,7 @@ export function LearningPath() {
                         {isCurrentModule ? (
                           <Link to={`/lesson/${module.id}/${firstUncompletedLesson.id}`} state={{ from: '/learning-path' }}>
                             <Button variant="gradient" className="w-full shadow-lg shadow-fuchsia-500/20">
-                              <Play size={16} className="mr-2" /> 
+                              <Play size={16} weight="fill" className="mr-2" /> 
                               {completedLessonsInModule > 0 ? 'Continue' : 'Start'}
                             </Button>
                           </Link>
@@ -140,8 +139,8 @@ export function LearningPath() {
                           </Link>
                         ) : (
                           <Link to={`/lesson/${module.id}/${module.lessons[0].id}`} state={{ from: '/learning-path' }}>
-                            <Button variant="ghost" className="w-full text-slate-400 hover:text-white">
-                              View <ChevronRight size={16} />
+                            <Button variant="ghost" className="w-full text-slate-400 hover:text-white flex items-center gap-1">
+                              View <CaretRight size={16} weight="bold" />
                             </Button>
                           </Link>
                         )}
