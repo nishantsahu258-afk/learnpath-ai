@@ -2,6 +2,12 @@ import { Link, useLocation } from 'react-router-dom';
 import { BookOpen, SquaresFour, Target, Sparkle, Gear, ListBullets } from '@phosphor-icons/react';
 import { useLearning } from '../../context/LearningContext';
 
+/**
+ * Main Application Sidebar
+ * Displays brand logo (linking to Landing page),
+ * and primary navigation links (Dashboard, My Learning, Modules, Progress, AI Assistant, Settings)
+ * with active indicator and disabled states when no active learning path is loaded.
+ */
 export function Sidebar() {
   const location = useLocation();
   const { learningPath } = useLearning();

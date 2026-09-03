@@ -21,6 +21,14 @@ import {
   DashboardIsometricLaptop 
 } from '../components/dashboard/DashboardIllustrations';
 
+/**
+ * Progress & Analytics Dashboard (/progress)
+ * Comprehensive visual progress hub displaying:
+ * - Overall course completion gauge (circular SVG ring)
+ * - Metric cards (Modules, Lessons, Total Hours)
+ * - Active Goal & Milestone progress
+ * - Learning speed & weekly activity charts
+ */
 export function Progress() {
   const navigate = useNavigate();
   const { learnerProfile, learningPath, learningProgress } = useLearning();

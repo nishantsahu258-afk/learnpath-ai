@@ -6,6 +6,15 @@ import { useLearning } from '../context/LearningContext';
 import { calculateStats } from '../utils/progressUtils';
 import { Target, Clock, CheckCircle, Play, BookOpen, CircleNotch, CaretRight } from '@phosphor-icons/react';
 
+/**
+ * My Learning Journey Page (/learning-path)
+ * Dedicated sequential roadmap visualization presenting:
+ * - Current Goal & Learner Profile summary
+ * - Overall progress percentage
+ * - Vertical timeline connecting sequenced modules
+ * - Module completion status (Completed, In Progress, Upcoming)
+ * - Direct navigation to current or review lessons
+ */
 export function LearningPath() {
   const navigate = useNavigate();
   const { learningPath, learningProgress, learnerProfile } = useLearning();

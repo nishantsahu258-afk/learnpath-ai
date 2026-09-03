@@ -1,3 +1,11 @@
+/**
+ * Validates and sanitizes AI-generated curriculum structures.
+ * Verifies titles, modules, lessons, and guarantees globally unique IDs.
+ * 
+ * @param {Object} data - Raw parsed JSON response from Gemini
+ * @returns {Object} Validated and normalized learning path object
+ * @throws {Error} Descriptive error if required schema invariants are violated
+ */
 export function validateLearningPath(data) {
   if (!data || typeof data !== 'object') {
     throw new Error('Invalid response: Expected an object');

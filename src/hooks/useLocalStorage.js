@@ -1,5 +1,13 @@
 import { useState, useEffect } from 'react';
 
+/**
+ * Custom hook for synchronized state persistence in browser localStorage.
+ * Handles JSON serialization, parsing, error tolerance, and default fallback.
+ * 
+ * @param {string} key - The localStorage storage key
+ * @param {*} initialValue - The initial default state if key is not yet set
+ * @returns {[any, Function]} - [storedValue, setStoredValue]
+ */
 export function useLocalStorage(key, initialValue) {
   const [value, setValue] = useState(() => {
     try {

@@ -21,6 +21,13 @@ import {
   DashboardIsometricLaptop 
 } from '../components/dashboard/DashboardIllustrations';
 
+/**
+ * Dashboard Page (/dashboard)
+ * Primary user command center displaying:
+ * - Active Goal card with next actionable lesson shortcut
+ * - Real-time statistics overview and circular completion gauge
+ * - Visual waypoints and achievement benchmarks
+ */
 export function Dashboard() {
   const navigate = useNavigate();
   const { learnerProfile, learningPath, learningProgress } = useLearning();

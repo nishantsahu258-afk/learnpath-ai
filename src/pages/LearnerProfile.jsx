@@ -34,6 +34,7 @@ import {
   TimeCommitmentIllustration,
   LearningStyleIllustration
 } from '../components/onboarding/OnboardingIllustrations';
+import { CosmicParticles } from '../components/ui/CosmicParticles';
 
 const STEPS = [
   { id: 'goal', title: 'Your Goal' },
@@ -125,29 +126,7 @@ export function LearnerProfile() {
       </div>
 
       {/* 3️⃣ Slow Ambient Cosmic Particles */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none z-[-1]">
-        {Array.from({ length: 30 }).map((_, i) => {
-          const size = Math.random() * 2 + 1;
-          const top = Math.random() * 100;
-          const left = Math.random() * 100;
-          const duration = Math.random() * 5 + 3;
-          const delay = Math.random() * 5;
-          return (
-            <div
-              key={i}
-              className="absolute bg-white rounded-full opacity-20"
-              style={{
-                width: size + 'px',
-                height: size + 'px',
-                top: top + '%',
-                left: left + '%',
-                animation: `pulse ${duration}s ease-in-out ${delay}s infinite alternate`,
-                boxShadow: '0 0 8px 1px rgba(255,255,255,0.3)'
-              }}
-            />
-          );
-        })}
-      </div>
+      <CosmicParticles />
 
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes shimmer {

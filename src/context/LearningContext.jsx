@@ -95,6 +95,7 @@ export function LearningProvider({ children }) {
   );
 }
 
+// oxlint-disable-next-line react/only-export-components
 export function useLearning() {
   const context = useContext(LearningContext);
   if (!context) {

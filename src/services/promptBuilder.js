@@ -1,3 +1,10 @@
+/**
+ * Constructs a structured system prompt for Gemini to generate
+ * a personalized, sequential curriculum tailored to user profile metrics.
+ * 
+ * @param {Object} profile - User learning profile (goal, reason, level, dailyTime, duration, learningStyle)
+ * @returns {string} Fully formulated system prompt with JSON schema constraint
+ */
 export function buildPrompt(profile) {
   return `
 SYSTEM/INSTRUCTION INTENT

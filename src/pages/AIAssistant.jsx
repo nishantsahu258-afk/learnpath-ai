@@ -19,6 +19,15 @@ import {
   BotMessageAvatar 
 } from '../components/assistant/AssistantMascot';
 
+/**
+ * AI Assistant / Tutor Chat Page (/assistant)
+ * Conversational learning assistant powered by Gemini.
+ * Features:
+ * - Context-aware responses based on active learning path
+ * - Quick-start prompt suggestion pills
+ * - Smooth auto-scrolling message container
+ * - Responsive mobile/desktop anchored input bar
+ */
 export function AIAssistant() {
   const { learningPath } = useLearning();
 

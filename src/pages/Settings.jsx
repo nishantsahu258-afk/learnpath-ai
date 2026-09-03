@@ -1,22 +1,21 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   Gear as SettingsIcon, 
   User, 
   PencilSimple, 
   CaretRight, 
-  Shield, 
-  Lock, 
-  Desktop, 
-  DownloadSimple, 
-  ShieldCheck, 
   Warning, 
   Trash, 
   UserMinus 
 } from '@phosphor-icons/react';
 import { useLearning } from '../context/LearningContext';
-import { SettingsTargetGraphic, SettingsShieldGraphic, SettingsDangerGraphic } from '../components/settings/SettingsIllustrations';
+import { SettingsTargetGraphic, SettingsDangerGraphic } from '../components/settings/SettingsIllustrations';
 
+/**
+ * Settings Page
+ * Allows users to inspect their learning profile preferences,
+ * navigate to edit them, and manage destructive actions (reset path, delete account).
+ */
 export function Settings() {
   const navigate = useNavigate();
   const { learnerProfile, resetAll } = useLearning();

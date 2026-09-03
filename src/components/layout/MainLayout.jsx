@@ -2,6 +2,11 @@ import { Outlet, Link } from 'react-router-dom';
 import { User } from '@phosphor-icons/react';
 import { Sidebar } from './Sidebar';
 
+/**
+ * Main Application Shell Layout
+ * Renders the persistent dark cosmic sidebar, ambient background glows,
+ * top-right profile navigation avatar, and routed child outlet.
+ */
 export function MainLayout() {
   return (
     <div className="flex h-screen bg-[#060713] text-white overflow-hidden font-sans selection:bg-fuchsia-500 selection:text-white">

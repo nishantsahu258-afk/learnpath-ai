@@ -8,17 +8,27 @@ const FALLBACK_MODELS = Array.from(new Set([primaryModel, 'gemini-3.5-flash', 'g
 
 const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
+/**
+ * Extracts user-friendly error messages from Gemini API error responses.
+ */
 function formatErrorMessage(error) {
   if (error?.message) {
     try {
       const parsed = JSON.parse(error.message);
       if (parsed?.error?.message) return parsed.error.message;
-    } catch (_) {}
+    } catch {
+      // If error message is not JSON, proceed to fallback
+    }
     return error.message;
   }
   return "An unexpected AI service error occurred. Please try again.";
 }
 
+/**
+ * Generates a structured personalized curriculum based on user profile.
+ * Automatically attempts fallback models (gemini-3.5-flash, gemini-3.5-flash-lite, gemini-2.5-flash)
+ * if rate limits (429) or temporary server unavailability (503) occur.
+ */
 export async function generateLearningPath(profile) {
   if (!ai) {
     throw new Error("Gemini API key is not configured. Please set VITE_GEMINI_API_KEY in your .env file.");
@@ -43,7 +53,8 @@ export async function generateLearningPath(profile) {
       let parsedData;
       try {
         parsedData = JSON.parse(text);
-      } catch (parseError) {
+      } catch {
+        // Strip any potential markdown code blocks if present
         const cleanedText = text.replace(/```json/g, '').replace(/```/g, '').trim();
         parsedData = JSON.parse(cleanedText);
       }

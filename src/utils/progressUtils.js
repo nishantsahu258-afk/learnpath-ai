@@ -1,3 +1,15 @@
+/**
+ * Calculates aggregated learning metrics across modules and lessons.
+ * Computes:
+ * - totalModules & totalLessons
+ * - completedLessonsCount
+ * - overallProgress (rounded percentage: 0 - 100)
+ * - estimatedHours & completedHours
+ * 
+ * @param {Object} learningPath - Active generated curriculum object
+ * @param {Object} learningProgress - User progress state containing completedLessonIds
+ * @returns {Object} Computed statistics
+ */
 export function calculateStats(learningPath, learningProgress) {
   if (!learningPath || !learningProgress) {
     return {

@@ -5,6 +5,14 @@ import { Card } from '../components/ui/Card';
 import { CheckCircle, Circle, Clock, CaretRight, CaretLeft, ArrowSquareOut } from '@phosphor-icons/react';
 import { useEffect } from 'react';
 
+/**
+ * Interactive Lesson Reader Page (/lesson/:moduleId/:lessonId)
+ * Handles:
+ * - Dynamic route parameters for active module & lesson
+ * - Intelligent back-navigation preserving user's entry point (/learning-path, /modules, /dashboard)
+ * - Semantic HTML lesson content rendering
+ * - Sequential lesson progression & mark as complete logic
+ */
 export function Lesson() {
   const { moduleId, lessonId } = useParams();
   const navigate = useNavigate();

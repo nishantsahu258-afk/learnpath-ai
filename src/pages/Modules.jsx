@@ -37,6 +37,13 @@ const MODULE_THEMES = [
   }
 ];
 
+/**
+ * Modules Overview Page (/modules)
+ * Showcases all curriculum modules in themed horizontal cards with:
+ * - Module index badges & custom icons (Frontend, React, Node, Deploy)
+ * - Completion statuses (Completed, In Progress, Locked)
+ * - Direct lesson access button with source route tracking
+ */
 export function Modules() {
   const navigate = useNavigate();
   const { learningPath, learningProgress } = useLearning();
