@@ -1,7 +1,7 @@
 <div align="center">
 
-# 🌌 LearnPath AI
-### Intelligent, Personalized Learning Roadmaps & AI Tutor
+# 🌌 Interactive LMS & Personal Learning Path Generator
+### LearnPath AI — AI-Powered Personalized Curriculums & Intelligent Tutoring
 
 [![React](https://img.shields.io/badge/React-19-61dafb?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
