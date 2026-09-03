@@ -168,7 +168,7 @@ export function LearnerProfile() {
       />
 
       {/* 3. MAIN INTERACTIVE CARD CONTAINER (Spacious Grid matching reference image) */}
-      <div className="bg-[#0b0c1e]/85 border border-purple-500/20 rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-7 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.8)] relative overflow-hidden transition-all duration-300">
+      <div className="bg-[#0b0c1e]/85 border border-purple-500/20 rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 lg:p-7 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.8)] relative transition-all duration-300">
         
         {/* Soft internal ambient glow */}
         <div className="absolute -top-24 -left-24 w-80 h-80 bg-fuchsia-600/10 rounded-full blur-3xl pointer-events-none" />
@@ -209,7 +209,7 @@ export function LearnerProfile() {
                     Choose the option that best describes your primary goal.
                   </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-2.5 lg:gap-3">
                     {/* Row 1 */}
                     <SelectableCard
                       title="Full Stack Web Development"
@@ -254,7 +254,7 @@ export function LearnerProfile() {
                       onClick={() => handleSelect('goal', 'Other')}
                       role="button"
                       tabIndex={0}
-                      className={`relative rounded-xl transition-all duration-300 cursor-pointer text-left overflow-hidden select-none outline-none group p-2.5 sm:p-3 hover:-translate-y-0.5 ${
+                      className={`relative rounded-xl transition-all duration-300 cursor-pointer text-left overflow-hidden select-none outline-none group p-2 sm:p-2.5 lg:p-3 hover:-translate-y-0.5 ${
                         formData.goal === 'Other'
                           ? 'bg-[#180d30]/95 border border-fuchsia-500 shadow-[0_0_20px_rgba(217,70,239,0.25)]'
                           : 'bg-[#0e0f24]/75 border border-slate-800/80 hover:border-slate-700 hover:bg-[#151736]/90'
@@ -309,7 +309,7 @@ export function LearnerProfile() {
                     Tell us what you’re hoping to achieve.
                   </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-2.5 lg:gap-3">
                     <SelectableCard
                       title="Start a new career"
                       description="Transition into tech and land your dream role."
@@ -368,7 +368,7 @@ export function LearnerProfile() {
                     This helps us set the right pace and prerequisites for you.
                   </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-2.5 lg:gap-3">
                     <SelectableCard
                       title="Beginner"
                       description="“I’m starting from the basics. I want step-by-step guidance from scratch.”"
@@ -477,7 +477,7 @@ export function LearnerProfile() {
                     Choose the learning format that works best for your brain.
                   </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-2.5 lg:gap-3">
                     <SelectableCard
                       title="Project-based"
                       description="Learn by coding actual real-world projects."
@@ -526,8 +526,8 @@ export function LearnerProfile() {
 
             </div>
 
-            {/* 4. NAVIGATION CONTROLS (Responsive stacking with 44px touch targets) */}
-            <div className="pt-4 mt-4 border-t border-slate-800/80 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3">
+            {/* 4. NAVIGATION CONTROLS (Sticky at bottom on mobile, static on tablet & desktop) */}
+            <div className="pt-3 sm:pt-4 mt-4 border-t border-slate-800/80 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3 sticky sm:static bottom-0 bg-[#0c0a1d]/95 sm:bg-transparent backdrop-blur-xl sm:backdrop-blur-none p-2 sm:p-0 rounded-xl sm:rounded-none z-20 shadow-[0_-10px_20px_rgba(0,0,0,0.6)] sm:shadow-none">
               
               {/* Left: Skip for now */}
               <div>

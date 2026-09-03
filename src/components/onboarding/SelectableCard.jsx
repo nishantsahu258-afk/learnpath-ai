@@ -63,7 +63,7 @@ export function SelectableCard({
         transition: isHovered ? 'none' : 'transform 0.4s ease-out'
       }}
       className={`relative rounded-xl transition-all duration-300 cursor-pointer text-left overflow-hidden select-none outline-none group ${
-        compact ? 'p-2 sm:p-2.5' : 'p-2.5 sm:p-3'
+        compact ? 'p-1.5 sm:p-2.5' : 'p-2 sm:p-2.5 lg:p-3'
       } ${
         isSelected
           ? 'bg-[#180d30]/95 border border-fuchsia-500 shadow-[0_0_20px_rgba(217,70,239,0.25)]'

@@ -20,7 +20,7 @@ export function MainLayout() {
   const isSetupOrGenerating = ['/setup', '/generating'].includes(location.pathname);
 
   return (
-    <div className="flex h-screen min-h-dvh bg-[#060713] text-white overflow-hidden font-sans selection:bg-fuchsia-500 selection:text-white">
+    <div className="flex flex-col md:flex-row min-h-dvh md:h-screen bg-[#060713] text-white overflow-x-hidden md:overflow-hidden font-sans selection:bg-fuchsia-500 selection:text-white">
       {/* Desktop Sidebar (>=768px) */}
       <Sidebar />
 
@@ -30,7 +30,7 @@ export function MainLayout() {
       {/* Mobile Slide-In Navigation Drawer (<768px) */}
       <MobileDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
       
-      <main className="flex-1 overflow-y-auto relative flex flex-col min-h-0 pt-safe pb-safe">
+      <main className="flex-1 min-h-0 md:overflow-y-auto relative flex flex-col pt-safe pb-safe">
         {/* Soft background ambient glow */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-900/10 rounded-full blur-[140px] pointer-events-none -z-10" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-fuchsia-900/10 rounded-full blur-[140px] pointer-events-none -z-10" />
@@ -46,7 +46,7 @@ export function MainLayout() {
         </header>
 
         {/* Main Routed Page Content (Comfortable vertical clearance for top bar and bottom dock) */}
-        <div className={`flex-1 px-3.5 sm:px-6 lg:px-12 pt-16 sm:pt-18 md:pt-5 ${isSetupOrGenerating ? 'pb-12 sm:pb-16' : 'pb-24 md:pb-5'} max-w-[1360px] mx-auto w-full flex flex-col justify-start min-h-0`}>
+        <div className={`flex-1 px-3.5 sm:px-6 lg:px-12 pt-16 sm:pt-18 md:pt-5 ${isSetupOrGenerating ? 'pb-20 sm:pb-24' : 'pb-24 md:pb-5'} max-w-[1360px] mx-auto w-full flex flex-col justify-start min-h-0`}>
           <Outlet />
         </div>
       </main>
