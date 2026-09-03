@@ -110,7 +110,7 @@ export function Dashboard() {
       </div>
 
       {/* 3. ROW 1: 3 SUMMARY METRIC CARDS */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 mb-5 sm:mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5 mb-5 sm:mb-6">
         
         {/* Card 1: Goal */}
         <div className="bg-[#0b0c1e]/85 border border-purple-500/20 rounded-2xl p-4 sm:p-5 backdrop-blur-xl shadow-xl flex items-center justify-between relative overflow-hidden group">
@@ -119,7 +119,7 @@ export function Dashboard() {
               <Target size={16} weight="duotone" />
               <span className="text-xs font-semibold tracking-wide">Goal</span>
             </div>
-            <h3 className="text-sm sm:text-base font-bold text-white leading-snug line-clamp-3">
+            <h3 className="text-sm sm:text-base font-bold text-white leading-snug line-clamp-3 break-words">
               {learningPath.goal || learnerProfile?.goal || "Build responsive, interactive personal web projects from scratch"}
             </h3>
           </div>
@@ -146,7 +146,7 @@ export function Dashboard() {
         </div>
 
         {/* Card 3: Commitment */}
-        <div className="bg-[#0b0c1e]/85 border border-purple-500/20 rounded-2xl p-4 sm:p-5 backdrop-blur-xl shadow-xl flex items-center justify-between relative overflow-hidden">
+        <div className="bg-[#0b0c1e]/85 border border-purple-500/20 rounded-2xl p-4 sm:p-5 backdrop-blur-xl shadow-xl flex items-center justify-between relative overflow-hidden sm:col-span-2 lg:col-span-1">
           <div className="flex-1 pr-3 z-10">
             <div className="flex items-center gap-1.5 text-orange-400 mb-1.5">
               <Fire size={16} weight="duotone" />
@@ -169,7 +169,7 @@ export function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5 sm:mb-6">
         
         {/* Left Card: Overall Progress (lg:col-span-7) */}
-        <div className="lg:col-span-7 bg-[#0b0c1e]/85 border border-purple-500/20 rounded-2xl p-5 sm:p-6 backdrop-blur-xl shadow-xl relative overflow-hidden flex flex-col justify-between">
+        <div className="lg:col-span-7 bg-[#0b0c1e]/85 border border-purple-500/20 rounded-2xl p-4 sm:p-6 backdrop-blur-xl shadow-xl relative overflow-hidden flex flex-col justify-between">
           <div>
             <h3 className="text-base sm:text-lg font-bold text-white mb-3">Overall Progress</h3>
             
@@ -182,7 +182,7 @@ export function Dashboard() {
             </div>
 
             {/* Glowing Progress bar */}
-            <div className="w-full bg-[#120a26] h-2 rounded-full overflow-hidden border border-purple-900/30 mb-6">
+            <div className="w-full bg-[#120a26] h-2 rounded-full overflow-hidden border border-purple-900/30 mb-5 sm:mb-6">
               <div 
                 className="h-full bg-gradient-to-r from-fuchsia-600 via-pink-500 to-rose-500 rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(217,70,239,0.5)]"
                 style={{ width: `${Math.max(stats.overallProgress, 2)}%` }}
@@ -194,41 +194,63 @@ export function Dashboard() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-1">
             
             {/* 3 Metric boxes */}
-            <div className="grid grid-cols-3 gap-2.5 sm:gap-3 flex-1 w-full">
+            <div className="grid grid-cols-3 gap-2 sm:gap-3 flex-1 w-full">
               {/* Box 1: Modules */}
-              <div className="bg-[#0e0f26]/80 border border-slate-800/80 rounded-xl p-3 text-left">
-                <Cube size={18} weight="duotone" className="text-fuchsia-400 mb-1.5" />
-                <div className="text-lg sm:text-xl font-bold text-white leading-tight">
+              <div className="bg-[#0e0f26]/80 border border-slate-800/80 rounded-xl p-2.5 sm:p-3 text-left">
+                <Cube size={18} weight="duotone" className="text-fuchsia-400 mb-1" />
+                <div className="text-base sm:text-xl font-bold text-white leading-tight">
                   {stats.totalModules}
                 </div>
-                <div className="text-xs font-semibold text-slate-300 mt-0.5">Modules</div>
-                <div className="text-[10px] text-slate-500">Across your path</div>
+                <div className="text-[11px] sm:text-xs font-semibold text-slate-300 mt-0.5">Modules</div>
+                <div className="text-[10px] text-slate-500 leading-tight">Across path</div>
               </div>
 
               {/* Box 2: Lessons */}
-              <div className="bg-[#0e0f26]/80 border border-slate-800/80 rounded-xl p-3 text-left">
-                <PlayCircle size={18} weight="duotone" className="text-pink-400 mb-1.5" />
-                <div className="text-lg sm:text-xl font-bold text-white leading-tight">
+              <div className="bg-[#0e0f26]/80 border border-slate-800/80 rounded-xl p-2.5 sm:p-3 text-left">
+                <PlayCircle size={18} weight="duotone" className="text-pink-400 mb-1" />
+                <div className="text-base sm:text-xl font-bold text-white leading-tight">
                   {stats.totalLessons}
                 </div>
-                <div className="text-xs font-semibold text-slate-300 mt-0.5">Lessons</div>
-                <div className="text-[10px] text-slate-500">To complete</div>
+                <div className="text-[11px] sm:text-xs font-semibold text-slate-300 mt-0.5">Lessons</div>
+                <div className="text-[10px] text-slate-500 leading-tight">To complete</div>
               </div>
 
               {/* Box 3: Total Hours */}
-              <div className="bg-[#0e0f26]/80 border border-slate-800/80 rounded-xl p-3 text-left">
-                <Clock size={18} weight="duotone" className="text-amber-400 mb-1.5" />
-                <div className="text-lg sm:text-xl font-bold text-white leading-tight">
+              <div className="bg-[#0e0f26]/80 border border-slate-800/80 rounded-xl p-2.5 sm:p-3 text-left">
+                <Clock size={18} weight="duotone" className="text-amber-400 mb-1" />
+                <div className="text-base sm:text-xl font-bold text-white leading-tight">
                   {stats.estimatedHours}h
                 </div>
-                <div className="text-xs font-semibold text-slate-300 mt-0.5">Total Hours</div>
-                <div className="text-[10px] text-slate-500">Of learning</div>
+                <div className="text-[11px] sm:text-xs font-semibold text-slate-300 mt-0.5">Total Hours</div>
+                <div className="text-[10px] text-slate-500 leading-tight">Of learning</div>
               </div>
             </div>
 
             {/* Circular Progress Ring with % */}
-            <div className="relative shrink-0 flex items-center justify-center w-28 h-28">
-              <svg className="w-28 h-28 -rotate-90">
+            <div className="relative shrink-0 flex items-center justify-center w-24 h-24 sm:w-28 sm:h-28 mx-auto sm:mx-0">
+              <svg className="w-24 h-24 sm:w-28 sm:h-28 -rotate-90">
+                <circle
+                  cx="48"
+                  cy="48"
+                  r={38}
+                  fill="transparent"
+                  stroke="#160d2e"
+                  strokeWidth="6"
+                  className="sm:hidden"
+                />
+                <circle
+                  cx="48"
+                  cy="48"
+                  r={38}
+                  fill="transparent"
+                  stroke="url(#dashRingGrad)"
+                  strokeWidth="6"
+                  strokeDasharray={2 * Math.PI * 38}
+                  strokeDashoffset={(2 * Math.PI * 38) - (stats.overallProgress / 100) * (2 * Math.PI * 38)}
+                  strokeLinecap="round"
+                  className="sm:hidden"
+                  style={{ filter: 'drop-shadow(0 0 8px rgba(217, 70, 239, 0.6))' }}
+                />
                 <circle
                   cx="56"
                   cy="56"
@@ -236,6 +258,7 @@ export function Dashboard() {
                   fill="transparent"
                   stroke="#160d2e"
                   strokeWidth="7"
+                  className="hidden sm:block"
                 />
                 <circle
                   cx="56"
@@ -247,6 +270,7 @@ export function Dashboard() {
                   strokeDasharray={ringCircumference}
                   strokeDashoffset={ringOffset}
                   strokeLinecap="round"
+                  className="hidden sm:block"
                   style={{ filter: 'drop-shadow(0 0 8px rgba(217, 70, 239, 0.6))' }}
                 />
                 <defs>
@@ -257,7 +281,7 @@ export function Dashboard() {
                 </defs>
               </svg>
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <span className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                <span className="text-lg sm:text-2xl font-bold text-white tracking-tight">
                   {Math.round(stats.overallProgress)}%
                 </span>
               </div>
@@ -276,7 +300,7 @@ export function Dashboard() {
         </div>
 
         {/* Right Card: Next Up (Current Lesson) (lg:col-span-5) */}
-        <div className="lg:col-span-5 bg-[#0b0c1e]/85 border border-purple-500/20 rounded-2xl p-5 sm:p-6 backdrop-blur-xl shadow-xl flex flex-col justify-between relative overflow-hidden">
+        <div className="lg:col-span-5 bg-[#0b0c1e]/85 border border-purple-500/20 rounded-2xl p-4 sm:p-6 backdrop-blur-xl shadow-xl flex flex-col justify-between relative overflow-hidden">
           
           <div>
             <div className="flex items-center justify-between mb-2">
@@ -285,20 +309,20 @@ export function Dashboard() {
             </div>
 
             {currentLessonInfo ? (
-              <div className="flex items-center justify-between gap-4">
-                <div className="flex-1 pr-2">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="flex-1 w-full">
                   {/* Module Pill */}
                   <div className="inline-block px-2.5 py-0.5 rounded-md bg-fuchsia-950/60 border border-fuchsia-500/30 text-[10px] font-bold text-fuchsia-300 tracking-wider uppercase mb-2">
                     {currentLessonInfo.module.title}
                   </div>
                   
                   {/* Lesson Title */}
-                  <h4 className="text-base sm:text-lg font-bold text-white mb-1.5 leading-snug">
+                  <h4 className="text-base sm:text-lg font-bold text-white mb-1.5 leading-snug break-words">
                     {currentLessonInfo.lesson.title}
                   </h4>
 
                   {/* Objective */}
-                  <p className="text-xs text-slate-400 line-clamp-2 max-w-[280px] leading-relaxed mb-5">
+                  <p className="text-xs text-slate-400 line-clamp-2 max-w-full sm:max-w-[280px] leading-relaxed mb-4">
                     {currentLessonInfo.lesson.objective}
                   </p>
 
@@ -306,8 +330,9 @@ export function Dashboard() {
                   <Link 
                     to={`/lesson/${currentLessonInfo.module.id}/${currentLessonInfo.lesson.id}`} 
                     state={{ from: '/dashboard' }}
+                    className="block w-full sm:w-auto"
                   >
-                    <button className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-fuchsia-600 via-pink-500 to-rose-500 text-white font-semibold text-xs sm:text-sm shadow-[0_0_22px_rgba(217,70,239,0.4)] hover:shadow-[0_0_30px_rgba(217,70,239,0.65)] hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2 cursor-pointer">
+                    <button className="w-full sm:w-auto min-h-[44px] px-6 py-2.5 rounded-xl bg-gradient-to-r from-fuchsia-600 via-pink-500 to-rose-500 text-white font-semibold text-xs sm:text-sm shadow-[0_0_22px_rgba(217,70,239,0.4)] hover:shadow-[0_0_30px_rgba(217,70,239,0.65)] hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer">
                       <Play size={14} weight="fill" />
                       <span>Continue Learning</span>
                     </button>
@@ -315,7 +340,9 @@ export function Dashboard() {
                 </div>
 
                 {/* 3D Isometric Laptop Illustration */}
-                <DashboardIsometricLaptop />
+                <div className="w-full sm:w-auto flex justify-center sm:justify-end shrink-0 pt-2 sm:pt-0">
+                  <DashboardIsometricLaptop />
+                </div>
               </div>
             ) : (
               <div className="flex flex-col items-center justify-center text-center py-8">

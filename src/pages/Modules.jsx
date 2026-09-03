@@ -107,39 +107,39 @@ export function Modules() {
               key={module.id || index}
               to={`/lesson/${module.id}/${firstLessonId}`} 
               state={{ from: '/modules' }} 
-              className="block group outline-none"
+              className="block group outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-500 rounded-2xl"
             >
               <div 
-                className={`bg-[#0c0a1d]/90 border ${theme.cardBorder} ${theme.borderAccent} rounded-2xl p-4 sm:p-5 flex items-center justify-between transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#110d29] shadow-xl relative overflow-hidden`}
+                className={`bg-[#0c0a1d]/90 border ${theme.cardBorder} ${theme.borderAccent} rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 sm:gap-4 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#110d29] shadow-xl relative overflow-hidden`}
               >
                 
                 {/* Left Section: Number + Icon + Title & Meta */}
-                <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0 pr-4">
+                <div className="flex items-start sm:items-center gap-3 sm:gap-4 flex-1 min-w-0">
                   
                   {/* Number Box (e.g. 01, 02) */}
-                  <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center font-mono font-bold text-base sm:text-lg shrink-0 shadow-inner ${theme.numberStyle}`}>
+                  <div className={`w-11 h-11 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center font-mono font-bold text-sm sm:text-lg shrink-0 shadow-inner ${theme.numberStyle}`}>
                     {String(index + 1).padStart(2, '0')}
                   </div>
 
                   {/* Vibrant Glowing Mascot Icon */}
-                  <div className="shrink-0">
+                  <div className="shrink-0 flex items-center justify-center">
                     <IconComp />
                   </div>
 
                   {/* Module Title & Details */}
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-sm sm:text-base font-bold text-white tracking-tight truncate group-hover:text-fuchsia-200 transition-colors">
+                    <h3 className="text-sm sm:text-base font-bold text-white tracking-tight leading-snug break-words group-hover:text-fuchsia-200 transition-colors">
                       {module.title}
                     </h3>
                     
-                    <div className="flex items-center gap-3 text-xs text-slate-400 mt-1">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-[11px] sm:text-xs text-slate-400 mt-1">
                       <div className="flex items-center gap-1.5">
-                        <FileText size={14} weight="regular" className="text-slate-400" />
+                        <FileText size={14} weight="regular" className="text-slate-400 shrink-0" />
                         <span>{totalLessonsInModule} Lessons</span>
                       </div>
                       <span className="text-slate-600">•</span>
                       <div className="flex items-center gap-1.5">
-                        <Clock size={14} weight="regular" className="text-slate-400" />
+                        <Clock size={14} weight="regular" className="text-slate-400 shrink-0" />
                         <span>~{estimatedHours} Hours</span>
                       </div>
                     </div>
@@ -148,15 +148,15 @@ export function Modules() {
                 </div>
 
                 {/* Right Section: Status Pill + Chevron Circle */}
-                <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+                <div className="flex items-center justify-between sm:justify-end gap-3 sm:gap-4 shrink-0 pt-2.5 sm:pt-0 border-t sm:border-t-0 border-purple-900/25">
                   
                   {/* Status Badge */}
-                  <div className="px-3.5 sm:px-4 py-1.5 rounded-xl bg-slate-900/80 border border-purple-900/40 text-[11px] sm:text-xs font-medium text-slate-400 shadow-sm group-hover:border-purple-500/40 transition-colors">
+                  <div className="px-3 sm:px-4 py-1.5 rounded-xl bg-slate-900/80 border border-purple-900/40 text-[11px] sm:text-xs font-medium text-slate-400 shadow-sm group-hover:border-purple-500/40 transition-colors">
                     {statusLabel}
                   </div>
 
                   {/* Right Arrow Circle Button */}
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#120e24] border border-purple-900/40 flex items-center justify-center text-slate-400 group-hover:text-white group-hover:border-purple-500/50 group-hover:scale-105 group-hover:bg-[#1a1236] transition-all shadow-sm">
+                  <div className="w-10 h-10 rounded-full bg-[#120e24] border border-purple-900/40 flex items-center justify-center text-slate-400 group-hover:text-white group-hover:border-purple-500/50 group-hover:scale-105 group-hover:bg-[#1a1236] transition-all shadow-sm shrink-0">
                     <CaretRight size={16} weight="bold" />
                   </div>
 

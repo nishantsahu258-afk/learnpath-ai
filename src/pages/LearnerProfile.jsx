@@ -176,8 +176,8 @@ export function LearnerProfile() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center relative z-10">
           
-          {/* LEFT COLUMN: 3D Illustration per Step */}
-          <div className="lg:col-span-4 flex items-center justify-center p-2 border-b lg:border-b-0 lg:border-r border-slate-800/80">
+          {/* LEFT COLUMN: 3D Illustration per Step (Hidden on mobile phones to prioritize questions & option cards) */}
+          <div className="lg:col-span-4 hidden sm:flex items-center justify-center p-2 border-b lg:border-b-0 lg:border-r border-slate-800/80">
             <div key={`illustration-${currentStep}`} className="animate-in fade-in zoom-in-95 duration-300 w-full flex items-center justify-center">
               {currentStep === 1 && <GoalDartboardIllustration />}
               {currentStep === 2 && <PurposeIllustration />}
@@ -526,27 +526,27 @@ export function LearnerProfile() {
 
             </div>
 
-            {/* 4. NAVIGATION CONTROLS (Exact match to reference image) */}
-            <div className="pt-4 mt-4 border-t border-slate-800/80 flex items-center justify-between">
+            {/* 4. NAVIGATION CONTROLS (Responsive stacking with 44px touch targets) */}
+            <div className="pt-4 mt-4 border-t border-slate-800/80 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3">
               
               {/* Left: Skip for now */}
               <div>
                 <button
                   type="button"
                   onClick={handleSkip}
-                  className="px-5 py-2.5 rounded-xl border border-slate-800 bg-[#0e1024] hover:bg-slate-800 text-xs sm:text-sm font-medium text-slate-400 hover:text-white transition-all cursor-pointer shadow-sm"
+                  className="w-full sm:w-auto min-h-[44px] px-5 py-2.5 rounded-xl border border-slate-800 bg-[#0e1024] hover:bg-slate-800 text-xs sm:text-sm font-medium text-slate-400 hover:text-white transition-all cursor-pointer shadow-sm flex items-center justify-center"
                 >
                   Skip for now
                 </button>
               </div>
 
               {/* Right: Back button + Next/Create button */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
                 {currentStep > 1 && (
                   <button
                     type="button"
                     onClick={handleBack}
-                    className="px-6 py-2.5 rounded-xl border border-slate-800 bg-[#0e1024] hover:bg-slate-800 text-xs sm:text-sm font-medium text-slate-300 hover:text-white transition-all cursor-pointer shadow-sm"
+                    className="flex-1 sm:flex-initial min-h-[44px] px-6 py-2.5 rounded-xl border border-slate-800 bg-[#0e1024] hover:bg-slate-800 text-xs sm:text-sm font-medium text-slate-300 hover:text-white transition-all cursor-pointer shadow-sm flex items-center justify-center"
                   >
                     Back
                   </button>
@@ -556,7 +556,7 @@ export function LearnerProfile() {
                   type="button"
                   onClick={handleNext}
                   disabled={!canProceed()}
-                  className="px-8 py-2.5 rounded-xl bg-gradient-to-r from-[#d946ef] via-[#ec4899] to-[#f97316] text-white font-semibold text-xs sm:text-sm shadow-[0_0_22px_rgba(217,70,239,0.45)] hover:shadow-[0_0_30px_rgba(217,70,239,0.7)] hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:shadow-none"
+                  className="flex-1 sm:flex-initial min-h-[44px] px-8 py-2.5 rounded-xl bg-gradient-to-r from-[#d946ef] via-[#ec4899] to-[#f97316] text-white font-semibold text-xs sm:text-sm shadow-[0_0_22px_rgba(217,70,239,0.45)] hover:shadow-[0_0_30px_rgba(217,70,239,0.7)] hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:shadow-none"
                 >
                   <span>
                     {currentStep === 5 ? 'Create My Learning Path' : 'Next'}

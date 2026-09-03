@@ -60,10 +60,10 @@ export function Settings() {
                 
                 <button 
                   onClick={() => navigate('/setup')}
-                  className="flex items-center gap-1.5 px-3.5 py-1.5 bg-slate-900/80 border border-purple-500/50 rounded-full text-fuchsia-400 text-xs font-medium hover:bg-fuchsia-950/40 hover:border-fuchsia-400/80 transition-all shadow-[0_0_10px_rgba(217,70,239,0.15)]"
+                  className="flex items-center gap-1.5 min-h-[44px] px-4 py-2 bg-slate-900/80 border border-purple-500/50 rounded-full text-fuchsia-400 text-xs font-semibold hover:bg-fuchsia-950/40 hover:border-fuchsia-400/80 transition-all shadow-[0_0_10px_rgba(217,70,239,0.15)] active:scale-95"
                 >
-                  <PencilSimple size={14} weight="bold" />
-                  Edit Profile
+                  <PencilSimple size={15} weight="bold" />
+                  <span>Edit Profile</span>
                 </button>
               </div>
 
@@ -71,39 +71,47 @@ export function Settings() {
               <div className="flex-1 flex flex-col justify-center space-y-0 text-xs sm:text-sm">
                 
                 {/* Row 1 */}
-                <div className="flex items-center justify-between py-2.5 border-b border-white/5 group/row hover:bg-white/[0.02] -mx-3 px-3 rounded-lg transition-colors cursor-pointer">
-                  <div className="w-1/3 text-slate-400">Current Goal</div>
-                  <div className="w-2/3 text-white font-medium pl-3 pr-6 line-clamp-1">
-                    {learnerProfile?.goal || "Full Stack Web Development"}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between py-2.5 sm:py-3 border-b border-white/5 group/row hover:bg-white/[0.02] -mx-2 sm:-mx-3 px-2 sm:px-3 rounded-lg transition-colors cursor-pointer min-h-[44px] gap-1 sm:gap-0">
+                  <div className="text-slate-400 text-xs sm:text-sm sm:w-1/3">Current Goal</div>
+                  <div className="flex items-center justify-between sm:w-2/3 sm:pl-3">
+                    <span className="text-white font-medium pr-2 break-words">
+                      {learnerProfile?.goal || "Full Stack Web Development"}
+                    </span>
+                    <CaretRight size={15} weight="bold" className="text-slate-500 shrink-0 group-hover/row:text-white transition-colors" />
                   </div>
-                  <CaretRight size={15} weight="bold" className="text-slate-500 shrink-0 group-hover/row:text-white transition-colors" />
                 </div>
                 
                 {/* Row 2 */}
-                <div className="flex items-center justify-between py-2.5 border-b border-white/5 group/row hover:bg-white/[0.02] -mx-3 px-3 rounded-lg transition-colors cursor-pointer">
-                  <div className="w-1/3 text-slate-400">Motivation & Reason</div>
-                  <div className="w-2/3 text-white font-medium pl-3 pr-6 line-clamp-1">
-                    {learnerProfile?.reason || "To build my own web apps and start a career as a developer"}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between py-2.5 sm:py-3 border-b border-white/5 group/row hover:bg-white/[0.02] -mx-2 sm:-mx-3 px-2 sm:px-3 rounded-lg transition-colors cursor-pointer min-h-[44px] gap-1 sm:gap-0">
+                  <div className="text-slate-400 text-xs sm:text-sm sm:w-1/3">Motivation & Reason</div>
+                  <div className="flex items-center justify-between sm:w-2/3 sm:pl-3">
+                    <span className="text-white font-medium pr-2 break-words">
+                      {learnerProfile?.reason || "To build my own web apps and start a career as a developer"}
+                    </span>
+                    <CaretRight size={15} weight="bold" className="text-slate-500 shrink-0 group-hover/row:text-white transition-colors" />
                   </div>
-                  <CaretRight size={15} weight="bold" className="text-slate-500 shrink-0 group-hover/row:text-white transition-colors" />
                 </div>
 
                 {/* Row 3 */}
-                <div className="flex items-center justify-between py-2.5 border-b border-white/5 group/row hover:bg-white/[0.02] -mx-3 px-3 rounded-lg transition-colors cursor-pointer">
-                  <div className="w-1/3 text-slate-400">Daily Commitment</div>
-                  <div className="w-2/3 text-white font-medium pl-3 pr-6 capitalize">
-                    {learnerProfile?.dailyTime || "1 – 2 Hours"}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between py-2.5 sm:py-3 border-b border-white/5 group/row hover:bg-white/[0.02] -mx-2 sm:-mx-3 px-2 sm:px-3 rounded-lg transition-colors cursor-pointer min-h-[44px] gap-1 sm:gap-0">
+                  <div className="text-slate-400 text-xs sm:text-sm sm:w-1/3">Daily Commitment</div>
+                  <div className="flex items-center justify-between sm:w-2/3 sm:pl-3">
+                    <span className="text-white font-medium pr-2 capitalize">
+                      {learnerProfile?.dailyTime || "1 – 2 Hours"}
+                    </span>
+                    <CaretRight size={15} weight="bold" className="text-slate-500 shrink-0 group-hover/row:text-white transition-colors" />
                   </div>
-                  <CaretRight size={15} weight="bold" className="text-slate-500 shrink-0 group-hover/row:text-white transition-colors" />
                 </div>
 
                 {/* Row 4 */}
-                <div className="flex items-center justify-between py-2.5 group/row hover:bg-white/[0.02] -mx-3 px-3 rounded-lg transition-colors cursor-pointer">
-                  <div className="w-1/3 text-slate-400">Experience Level</div>
-                  <div className="w-2/3 text-white font-medium pl-3 pr-6 capitalize">
-                    {learnerProfile?.level || "Beginner"}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between py-2.5 sm:py-3 group/row hover:bg-white/[0.02] -mx-2 sm:-mx-3 px-2 sm:px-3 rounded-lg transition-colors cursor-pointer min-h-[44px] gap-1 sm:gap-0">
+                  <div className="text-slate-400 text-xs sm:text-sm sm:w-1/3">Experience Level</div>
+                  <div className="flex items-center justify-between sm:w-2/3 sm:pl-3">
+                    <span className="text-white font-medium pr-2 capitalize">
+                      {learnerProfile?.level || "Beginner"}
+                    </span>
+                    <CaretRight size={15} weight="bold" className="text-slate-500 shrink-0 group-hover/row:text-white transition-colors" />
                   </div>
-                  <CaretRight size={15} weight="bold" className="text-slate-500 shrink-0 group-hover/row:text-white transition-colors" />
                 </div>
 
               </div>

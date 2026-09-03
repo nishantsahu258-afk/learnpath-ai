@@ -130,7 +130,7 @@ Assistant:`;
   };
 
   return (
-    <div className="w-full max-w-[1240px] mx-auto text-white flex flex-col select-none h-[calc(100vh-6.8rem)] min-h-[500px]">
+    <div className="w-full max-w-[1240px] mx-auto text-white flex flex-col select-none h-[calc(100dvh-10.5rem)] md:h-[calc(100dvh-6.8rem)] min-h-[440px] pb-safe">
       
       {/* 1. TOP HEADER (Centered with mascot icon and sparkle) */}
       <div className="flex flex-col items-center justify-center text-center mb-3 pt-0.5 shrink-0">
@@ -147,7 +147,7 @@ Assistant:`;
       </div>
 
       {/* 2. MAIN CARD CONTAINER */}
-      <div className="bg-[#0c0a1d] border border-purple-900/40 rounded-3xl p-4 sm:p-6 shadow-[0_20px_60px_rgba(0,0,0,0.7)] relative overflow-hidden flex flex-col flex-1 min-h-0">
+      <div className="bg-[#0c0a1d] border border-purple-900/40 rounded-3xl p-3.5 sm:p-6 shadow-[0_20px_60px_rgba(0,0,0,0.7)] relative overflow-hidden flex flex-col flex-1 min-h-0">
         
         {/* Soft internal cosmic ambient glow */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[350px] bg-fuchsia-600/10 blur-[130px] rounded-full pointer-events-none" />
@@ -238,10 +238,10 @@ Assistant:`;
                   {/* Bot Avatar */}
                   {msg.role === 'assistant' && <BotMessageAvatar />}
                   
-                  {/* Message Bubble */}
-                  <div className="relative group max-w-[85%] sm:max-w-xl">
+                  {/* Message Bubble (90% on mobile, 80% on desktop) */}
+                  <div className="relative group max-w-[90%] sm:max-w-xl">
                     <div 
-                      className={`rounded-2xl px-5 py-3.5 text-xs sm:text-sm leading-relaxed whitespace-pre-wrap shadow-lg ${
+                      className={`rounded-2xl px-4 sm:px-5 py-3 sm:py-3.5 text-xs sm:text-sm leading-relaxed whitespace-pre-wrap shadow-lg break-words ${
                         msg.role === 'user'
                           ? 'bg-[#15102a] border border-purple-900/40 text-white rounded-br-sm'
                           : 'bg-[#121026] border border-purple-900/30 text-slate-100 rounded-bl-sm'
@@ -284,7 +284,7 @@ Assistant:`;
                   <p className="text-xs text-slate-300 mb-2">{error}</p>
                   <button 
                     onClick={handleRetry} 
-                    className="px-4 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-medium text-white flex items-center gap-2 transition-all cursor-pointer"
+                    className="px-4 py-2 min-h-[44px] rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-medium text-white flex items-center gap-2 transition-all cursor-pointer"
                   >
                     <ArrowsClockwise size={14} weight="bold" /> Try Again
                   </button>
@@ -293,14 +293,14 @@ Assistant:`;
             </div>
           )}
 
-          {/* 6. INPUT BAR CONTAINER (Always anchored at bottom) */}
+          {/* 6. INPUT BAR CONTAINER (Always anchored at bottom with 44px touch targets) */}
           <form onSubmit={handleSubmit} className="relative shrink-0 mt-auto pt-2">
-            <div className="bg-[#0e0c1f] border border-purple-900/40 rounded-2xl p-1.5 sm:p-2 flex items-center gap-2 shadow-inner focus-within:border-fuchsia-500/50 transition-all">
+            <div className="bg-[#0e0c1f] border border-purple-900/40 rounded-2xl p-1 sm:p-2 flex items-center gap-2 shadow-inner focus-within:border-fuchsia-500/50 transition-all">
               
-              {/* Attachment Icon Button */}
+              {/* Attachment Icon Button (44px touch target) */}
               <button
                 type="button"
-                className="w-10 h-10 rounded-xl bg-[#140e28] border border-purple-900/40 flex items-center justify-center text-slate-400 hover:text-white hover:border-purple-500/50 hover:bg-[#1a1236] transition-all shrink-0 cursor-pointer"
+                className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-xl bg-[#140e28] border border-purple-900/40 flex items-center justify-center text-slate-400 hover:text-white hover:border-purple-500/50 hover:bg-[#1a1236] transition-all shrink-0 cursor-pointer"
                 title="Attach file"
               >
                 <Paperclip size={18} weight="regular" />
@@ -312,15 +312,15 @@ Assistant:`;
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask anything..."
-                className="flex-1 bg-transparent px-3 py-2 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none"
+                className="flex-1 bg-transparent px-2.5 sm:px-3 py-2 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none min-h-[44px]"
                 disabled={isLoading}
               />
 
-              {/* Glowing Gradient Send Button */}
+              {/* Glowing Gradient Send Button (44px touch target) */}
               <button
                 type="submit"
                 disabled={!input.trim() || isLoading}
-                className="w-10 h-10 rounded-xl bg-gradient-to-r from-purple-600 via-fuchsia-500 to-pink-500 flex items-center justify-center text-white shadow-[0_0_18px_rgba(217,70,239,0.5)] hover:shadow-[0_0_26px_rgba(217,70,239,0.85)] hover:scale-105 active:scale-95 transition-all shrink-0 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:shadow-none"
+                className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-xl bg-gradient-to-r from-purple-600 via-fuchsia-500 to-pink-500 flex items-center justify-center text-white shadow-[0_0_18px_rgba(217,70,239,0.5)] hover:shadow-[0_0_26px_rgba(217,70,239,0.85)] hover:scale-105 active:scale-95 transition-all shrink-0 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:shadow-none"
                 title="Send message"
               >
                 <PaperPlaneRight size={18} weight="fill" />

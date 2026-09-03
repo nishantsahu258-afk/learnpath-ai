@@ -149,7 +149,7 @@ export function AIGenerating() {
       </div>
 
       {/* 2. CENTER HERO: COSMIC ORBITS & GLOWING CIRCULAR PROGRESS RING */}
-      <div className="relative w-full max-w-[620px] h-[250px] sm:h-[270px] flex items-center justify-center mb-6">
+      <div className="relative w-full max-w-[620px] h-[240px] sm:h-[270px] flex items-center justify-center mb-5 sm:mb-6 overflow-hidden sm:overflow-visible">
         
         {/* Ambient Stardust Glow behind the ring */}
         <div className="absolute w-64 h-64 bg-fuchsia-600/20 rounded-full blur-3xl pointer-events-none" />
@@ -157,49 +157,49 @@ export function AIGenerating() {
 
         {/* Orbit Ring 1 (Outer ellipse) */}
         <div 
-          className="absolute w-[480px] sm:w-[580px] h-[140px] sm:h-[160px] rounded-[100%] border border-fuchsia-500/10 rotate-[-12deg] pointer-events-none"
+          className="absolute w-[340px] sm:w-[580px] h-[120px] sm:h-[160px] rounded-[100%] border border-fuchsia-500/10 rotate-[-12deg] pointer-events-none"
         />
 
         {/* Orbit Ring 2 (Middle ellipse) */}
         <div 
-          className="absolute w-[410px] sm:w-[510px] h-[120px] sm:h-[135px] rounded-[100%] border border-purple-500/20 rotate-[5deg] pointer-events-none"
+          className="absolute w-[300px] sm:w-[510px] h-[100px] sm:h-[135px] rounded-[100%] border border-purple-500/20 rotate-[5deg] pointer-events-none"
           style={{ boxShadow: '0 0 20px rgba(168, 85, 247, 0.12)' }}
         />
 
         {/* Orbit Ring 3 (Inner ellipse) */}
         <div 
-          className="absolute w-[340px] sm:w-[420px] h-[95px] sm:h-[110px] rounded-[100%] border border-pink-500/15 rotate-[20deg] pointer-events-none"
+          className="absolute w-[260px] sm:w-[420px] h-[85px] sm:h-[110px] rounded-[100%] border border-pink-500/15 rotate-[20deg] pointer-events-none"
         />
 
-        {/* Floating Skill Badges on Orbit Rings (Exact match to reference) */}
+        {/* Floating Skill Badges on Orbit Rings (Scaled & repositioned for mobile) */}
         {/* 1. Target (Top-Left / Mid-Left) - Pink/Red ring */}
-        <div className="absolute left-10 sm:left-16 top-10 w-9 h-9 rounded-full bg-[#18112e] border-2 border-rose-500/50 flex items-center justify-center text-rose-400 shadow-[0_0_15px_rgba(244,63,94,0.4)] z-10">
-          <Target size={18} weight="duotone" />
+        <div className="absolute left-6 sm:left-16 top-6 sm:top-10 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#18112e] border-2 border-rose-500/50 flex items-center justify-center text-rose-400 shadow-[0_0_15px_rgba(244,63,94,0.4)] z-10">
+          <Target size={16} weight="duotone" className="sm:w-[18px] sm:h-[18px]" />
         </div>
 
         {/* 2. Brain (Far left) - Purple ring */}
-        <div className="absolute -left-2 sm:left-4 top-28 w-10 h-10 rounded-full bg-[#18112e] border-2 border-purple-500/50 flex items-center justify-center text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.4)] z-10">
-          <Brain size={20} weight="duotone" />
+        <div className="absolute left-2 sm:left-4 top-24 sm:top-28 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#18112e] border-2 border-purple-500/50 flex items-center justify-center text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.4)] z-10">
+          <Brain size={16} weight="duotone" className="sm:w-[20px] sm:h-[20px]" />
         </div>
 
         {/* 3. BookOpen (Near Bottom left) - Purple ring */}
-        <div className="absolute left-24 sm:left-32 bottom-2 w-8 h-8 rounded-full bg-[#18112e] border-2 border-purple-500/50 flex items-center justify-center text-purple-400 shadow-[0_0_12px_rgba(168,85,247,0.4)] z-10">
-          <BookOpen size={16} weight="duotone" />
+        <div className="absolute left-16 sm:left-32 bottom-2 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#18112e] border-2 border-purple-500/50 flex items-center justify-center text-purple-400 shadow-[0_0_12px_rgba(168,85,247,0.4)] z-10">
+          <BookOpen size={14} weight="duotone" className="sm:w-[16px] sm:h-[16px]" />
         </div>
 
         {/* 4. Code </> (Top right) - Purple ring */}
-        <div className="absolute right-12 sm:right-20 top-6 w-9 h-9 rounded-full bg-[#18112e] border-2 border-purple-500/50 flex items-center justify-center text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.4)] z-10">
-          <Code size={18} weight="bold" />
+        <div className="absolute right-8 sm:right-20 top-6 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#18112e] border-2 border-purple-500/50 flex items-center justify-center text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.4)] z-10">
+          <Code size={16} weight="bold" className="sm:w-[18px] sm:h-[18px]" />
         </div>
 
         {/* 5. TrendUp (Far right) - Magenta/Purple ring */}
-        <div className="absolute -right-2 sm:right-6 top-32 w-10 h-10 rounded-full bg-[#18112e] border-2 border-fuchsia-500/50 flex items-center justify-center text-fuchsia-400 shadow-[0_0_15px_rgba(217,70,239,0.4)] z-10">
-          <TrendUp size={20} weight="duotone" />
+        <div className="absolute right-2 sm:right-6 top-24 sm:top-32 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#18112e] border-2 border-fuchsia-500/50 flex items-center justify-center text-fuchsia-400 shadow-[0_0_15px_rgba(217,70,239,0.4)] z-10">
+          <TrendUp size={16} weight="duotone" className="sm:w-[20px] sm:h-[20px]" />
         </div>
 
         {/* 6. GraduationCap (Bottom right) - Orange/Amber ring */}
-        <div className="absolute right-20 sm:right-28 bottom-4 w-9 h-9 rounded-full bg-[#18112e] border-2 border-amber-500/50 flex items-center justify-center text-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.4)] z-10">
-          <GraduationCap size={18} weight="duotone" />
+        <div className="absolute right-14 sm:right-28 bottom-2 sm:bottom-4 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#18112e] border-2 border-amber-500/50 flex items-center justify-center text-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.4)] z-10">
+          <GraduationCap size={16} weight="duotone" className="sm:w-[18px] sm:h-[18px]" />
         </div>
 
         {/* CENTRAL GLOWING PROGRESS RING */}
