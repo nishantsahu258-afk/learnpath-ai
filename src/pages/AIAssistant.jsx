@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { 
   PaperPlaneRight, 
-  Paperclip, 
   BookOpen, 
   Sparkle, 
   Question, 
@@ -295,24 +294,15 @@ Assistant:`;
 
           {/* 6. INPUT BAR CONTAINER (Always anchored at bottom with 44px touch targets) */}
           <form onSubmit={handleSubmit} className="relative shrink-0 mt-auto pt-2">
-            <div className="bg-[#0e0c1f] border border-purple-900/40 rounded-2xl p-1 sm:p-2 flex items-center gap-2 shadow-inner focus-within:border-fuchsia-500/50 transition-all">
+            <div className="bg-[#0e0c1f] border border-purple-900/40 rounded-2xl p-1 sm:p-1.5 flex items-center gap-2 shadow-inner focus-within:border-fuchsia-500/50 transition-all">
               
-              {/* Attachment Icon Button (44px touch target) */}
-              <button
-                type="button"
-                className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-xl bg-[#140e28] border border-purple-900/40 flex items-center justify-center text-slate-400 hover:text-white hover:border-purple-500/50 hover:bg-[#1a1236] transition-all shrink-0 cursor-pointer"
-                title="Attach file"
-              >
-                <Paperclip size={18} weight="regular" />
-              </button>
-
               {/* Text Input */}
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask anything..."
-                className="flex-1 bg-transparent px-2.5 sm:px-3 py-2 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none min-h-[44px]"
+                className="flex-1 bg-transparent px-3 sm:px-4 py-2 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none min-h-[44px]"
                 disabled={isLoading}
               />
 
