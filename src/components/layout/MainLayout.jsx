@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, useLocation } from 'react-router-dom';
 import { User } from '@phosphor-icons/react';
 import { Sidebar } from './Sidebar';
 import { MobileTopBar } from './MobileTopBar';
@@ -11,10 +11,13 @@ import { MobileBottomNav } from './MobileBottomNav';
  * Responsive adaptive shell:
  * - Desktop (>=768px): Sticky left sidebar + top-right profile button
  * - Mobile (<768px): Fixed top bar (hamburger + centered logo + profile menu) + slide-in drawer + bottom nav dock
+ * - Onboarding routes (/setup, /generating): Automatically hides mobile bottom dock to prioritize step navigation buttons
  * - Automatic safe area and viewport adjustments
  */
 export function MainLayout() {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const location = useLocation();
+  const isSetupOrGenerating = ['/setup', '/generating'].includes(location.pathname);
 
   return (
     <div className="flex h-screen min-h-dvh bg-[#060713] text-white overflow-hidden font-sans selection:bg-fuchsia-500 selection:text-white">
@@ -42,14 +45,14 @@ export function MainLayout() {
           </Link>
         </header>
 
-        {/* Main Routed Page Content (Adjusted vertical spacing for mobile top bar and bottom dock) */}
-        <div className="flex-1 px-3.5 sm:px-6 lg:px-12 pt-16 md:pt-5 pb-24 md:pb-5 max-w-[1360px] mx-auto w-full flex flex-col justify-start min-h-0">
+        {/* Main Routed Page Content (Comfortable vertical clearance for top bar and bottom dock) */}
+        <div className={`flex-1 px-3.5 sm:px-6 lg:px-12 pt-16 sm:pt-18 md:pt-5 ${isSetupOrGenerating ? 'pb-12 sm:pb-16' : 'pb-24 md:pb-5'} max-w-[1360px] mx-auto w-full flex flex-col justify-start min-h-0`}>
           <Outlet />
         </div>
       </main>
 
-      {/* Mobile Bottom Navigation Dock (<768px) */}
-      <MobileBottomNav />
+      {/* Mobile Bottom Navigation Dock (<768px, hidden during onboarding setup) */}
+      {!isSetupOrGenerating && <MobileBottomNav />}
     </div>
   );
 }

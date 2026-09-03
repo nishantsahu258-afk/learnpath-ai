@@ -117,7 +117,7 @@ export function LearnerProfile() {
   };
 
   return (
-    <div className="w-full max-w-[1220px] mx-auto py-1 sm:py-2 text-white flex flex-col justify-center min-h-[calc(100vh-6rem)] relative z-0">
+    <div className="w-full max-w-[1220px] mx-auto py-2 sm:py-4 text-white flex flex-col justify-start min-h-0 relative z-0 pb-16 sm:pb-12">
       
       {/* 5️⃣ Planet/Horizon breathing glow */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-[-2]">
@@ -167,8 +167,8 @@ export function LearnerProfile() {
         onStepClick={(stepNum) => setCurrentStep(stepNum)} 
       />
 
-      {/* 3. MAIN INTERACTIVE CARD CONTAINER (Spacious 3-Column Grid matching reference image) */}
-      <div className="bg-[#0b0c1e]/85 border border-purple-500/20 rounded-3xl p-5 sm:p-7 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.8)] relative overflow-hidden transition-all duration-300">
+      {/* 3. MAIN INTERACTIVE CARD CONTAINER (Spacious Grid matching reference image) */}
+      <div className="bg-[#0b0c1e]/85 border border-purple-500/20 rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-7 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.8)] relative overflow-hidden transition-all duration-300">
         
         {/* Soft internal ambient glow */}
         <div className="absolute -top-24 -left-24 w-80 h-80 bg-fuchsia-600/10 rounded-full blur-3xl pointer-events-none" />
@@ -176,8 +176,8 @@ export function LearnerProfile() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center relative z-10">
           
-          {/* LEFT COLUMN: 3D Illustration per Step (Hidden on mobile phones to prioritize questions & option cards) */}
-          <div className="lg:col-span-4 hidden sm:flex items-center justify-center p-2 border-b lg:border-b-0 lg:border-r border-slate-800/80">
+          {/* LEFT COLUMN: 3D Illustration per Step (Displayed on Desktop >=lg, hidden on mobile/iPad to prevent vertical cut-off) */}
+          <div className="lg:col-span-4 hidden lg:flex items-center justify-center p-2 border-b lg:border-b-0 lg:border-r border-slate-800/80">
             <div key={`illustration-${currentStep}`} className="animate-in fade-in zoom-in-95 duration-300 w-full flex items-center justify-center">
               {currentStep === 1 && <GoalDartboardIllustration />}
               {currentStep === 2 && <PurposeIllustration />}
@@ -187,8 +187,8 @@ export function LearnerProfile() {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Question, 3-Column Options Grid & Navigation */}
-          <div className="lg:col-span-8 flex flex-col justify-between">
+          {/* RIGHT COLUMN: Question, Options Grid & Navigation (Spans full width on mobile/tablet, 8 cols on desktop) */}
+          <div className="col-span-12 lg:col-span-8 flex flex-col justify-between w-full">
             
             <div key={`step-content-${currentStep}`} className="animate-in fade-in slide-in-from-right-3 duration-200">
               
