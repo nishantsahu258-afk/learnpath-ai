@@ -1,23 +1,20 @@
 import { useState } from 'react';
-import { Outlet, Link, useLocation } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 import { User } from '@phosphor-icons/react';
 import { Sidebar } from './Sidebar';
 import { MobileTopBar } from './MobileTopBar';
 import { MobileDrawer } from './MobileDrawer';
-import { MobileBottomNav } from './MobileBottomNav';
 
 /**
  * Main Application Shell Layout
  * Responsive adaptive shell:
  * - Desktop (>=768px): Sticky left sidebar + top-right profile button
- * - Mobile (<768px): Fixed top bar (hamburger + centered logo + profile menu) + slide-in drawer + bottom nav dock
- * - Onboarding routes (/setup, /generating): Automatically hides mobile bottom dock to prioritize step navigation buttons
+ * - Mobile (<768px): Fixed top bar (hamburger + centered logo + profile menu) + slide-in drawer
+ * - All navigation on mobile is centralized in the hamburger MobileDrawer
  * - Automatic safe area and viewport adjustments
  */
 export function MainLayout() {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const location = useLocation();
-  const isSetupOrGenerating = ['/setup', '/generating'].includes(location.pathname);
 
   return (
     <div className="flex flex-col md:flex-row min-h-dvh md:h-screen bg-[#060713] text-white overflow-x-hidden md:overflow-hidden font-sans selection:bg-fuchsia-500 selection:text-white">
@@ -45,14 +42,11 @@ export function MainLayout() {
           </Link>
         </header>
 
-        {/* Main Routed Page Content (Comfortable vertical clearance for top bar and bottom dock) */}
-        <div className={`flex-1 px-3.5 sm:px-6 lg:px-12 pt-16 sm:pt-18 md:pt-5 ${isSetupOrGenerating ? 'pb-20 sm:pb-24' : 'pb-24 md:pb-5'} max-w-[1360px] mx-auto w-full flex flex-col justify-start min-h-0`}>
+        {/* Main Routed Page Content */}
+        <div className="flex-1 px-3.5 sm:px-6 lg:px-12 pt-16 sm:pt-18 md:pt-5 pb-8 sm:pb-10 md:pb-5 max-w-[1360px] mx-auto w-full flex flex-col justify-start min-h-0">
           <Outlet />
         </div>
       </main>
-
-      {/* Mobile Bottom Navigation Dock (<768px, hidden during onboarding setup) */}
-      {!isSetupOrGenerating && <MobileBottomNav />}
     </div>
   );
 }

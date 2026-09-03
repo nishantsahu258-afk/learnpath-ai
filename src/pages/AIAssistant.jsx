@@ -130,7 +130,7 @@ Assistant:`;
   };
 
   return (
-    <div className="w-full max-w-[1240px] mx-auto text-white flex flex-col select-none h-[calc(100dvh-10.5rem)] md:h-[calc(100dvh-6.8rem)] min-h-[440px] pb-safe">
+    <div className="w-full max-w-[1240px] mx-auto text-white flex flex-col select-none h-[calc(100dvh-7.5rem)] md:h-[calc(100dvh-6.8rem)] min-h-[440px] pb-safe">
       
       {/* 1. TOP HEADER (Centered with mascot icon and sparkle) */}
       <div className="flex flex-col items-center justify-center text-center mb-3 pt-0.5 shrink-0">
